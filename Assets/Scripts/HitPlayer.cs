@@ -34,7 +34,7 @@ public class HitPlayer : MonoBehaviour
             {
                 player.GetComponent<PlayerController>().isDead = true;
                 player.GetComponent<PlayerController>().anim.SetBool("Dead", true);
-            }
+            }   
         }
     }
 }

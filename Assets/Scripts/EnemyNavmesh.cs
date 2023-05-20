@@ -16,9 +16,12 @@ public class EnemyNavmesh : MonoBehaviour
     public bool isDead = false;
     public BoxCollider leftHand;
     public BoxCollider rightHand;
-    public bool attack;
+    public static bool attack;
     public bool rotate;
     public GameObject Player;
+    public bool talk;
+    public bool canvasActive;
+    public GameObject canvas;
 
     private void Awake()
     {
@@ -67,6 +70,14 @@ public class EnemyNavmesh : MonoBehaviour
             attack = false;
             StopCoroutine(startAttack());
         }
+        if(talk)
+        {
+            anim.SetBool("Talk", true);
+        }
+        else
+        {
+            anim.SetBool("Talk", false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -96,6 +107,11 @@ public class EnemyNavmesh : MonoBehaviour
         {
             anim.SetBool("isWalking", false);
             RotateTowards(player);
+            if(!canvasActive)
+            {
+                canvas.SetActive(true);
+                canvasActive = true;
+            }
         }
     }
 
@@ -106,7 +122,6 @@ public class EnemyNavmesh : MonoBehaviour
             Vector3 direction = (target.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f);
-            attack = true;
             rotate = false;
         }
     }

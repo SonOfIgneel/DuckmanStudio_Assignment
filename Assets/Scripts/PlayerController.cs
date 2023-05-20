@@ -12,10 +12,11 @@ public class PlayerController : MonoBehaviour
     public BoxCollider leftHand;
     public BoxCollider rightHand;
     public bool isDead = false;
-
+    public static bool isAttackMode;
     // Start is called before the first frame update
     void Start()
     {
+        isAttackMode = false;
         this.rb = GetComponent<Rigidbody>();
     }
 
@@ -27,7 +28,8 @@ public class PlayerController : MonoBehaviour
             Grounded();
             Jump();
             Move();
-            Attack();
+            if(isAttackMode)
+                Attack();
         }
     }
 

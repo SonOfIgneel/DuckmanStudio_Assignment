@@ -1,52 +1,12 @@
 fileFormatVersion: 2
-guid: 65ec458f063257946a0a627ba3d87765
+guid: ef177258b1d31c245ab2269dddc55709
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: mixamo.com
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1001_Diffuse
-    second: {fileID: 2800000, guid: b574fc10568d94d4cb1043cf001d51d6, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1001_Glossiness
-    second: {fileID: 2800000, guid: 7251f1b958f4e2e4083ac0b911d9cc18, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1001_Normal
-    second: {fileID: 2800000, guid: f751afa35a22db344a3e530b5ddfec4a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1001_Specular
-    second: {fileID: 2800000, guid: 5bcd95091d6ba144c84459d409c5fe6a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1002_Diffuse
-    second: {fileID: 2800000, guid: 943f1b20bf037b548819fe77186079e6, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1002_Glossiness
-    second: {fileID: 2800000, guid: b9ac94a8a3bd5ce478b8e573a4ecce47, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1002_Normal
-    second: {fileID: 2800000, guid: e17012174a7441b4c9c09d098e4e72ee, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1002_Specular
-    second: {fileID: 2800000, guid: 97f73650ad4dc4d4192e6f8dc1f66e95, type: 3}
+    second: Talking
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -74,7 +34,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Talking
+      takeName: mixamo.com
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 113
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -118,16 +107,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 299a5a74ffd96ec48a5d1572159ff766
-  - 596ead395dff44146b55554fd7916096
-  - 29b3a0ab72c4fcd4397b961d6cc41e9d
-  - 03c81e7b5f5ca5a43a4d9cc7569cc8ca
-  - 41ed49815f6cdc94a86f715cf33c04a4
-  - e9d55d68bf67ffc479b2af5cffbd28fb
-  - 49e54922e9432b04a91917bf28172179
-  - edbf2ceb139730e41b73d0f4782f8452
-  - eb230fbc64deda2438c7d46fdefec15d
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
