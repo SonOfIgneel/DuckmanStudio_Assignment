@@ -2888,7 +2888,7 @@ Animator:
   m_GameObject: {fileID: 120566187}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6d8fcbbcdcfff4844b14ca4600cad407, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -12452,7 +12452,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &529346137
 MonoBehaviour:
@@ -12466,6 +12466,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be51498e5ec89034dbf39c1b5ce1411e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 120566188}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  grounded: 0
 --- !u!136 &529346138
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12827,12 +12832,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 526116187}
     m_Modifications:
     - target: {fileID: 1000010335641028, guid: 5679dbafae207c647bfe22b5551bbeba, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010335641028, guid: 5679dbafae207c647bfe22b5551bbeba, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1000012196295660, guid: 5679dbafae207c647bfe22b5551bbeba, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012196295660, guid: 5679dbafae207c647bfe22b5551bbeba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012196295660, guid: 5679dbafae207c647bfe22b5551bbeba, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013514771496, guid: 5679dbafae207c647bfe22b5551bbeba, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1000013514771496, guid: 5679dbafae207c647bfe22b5551bbeba, type: 3}
       propertyPath: m_StaticEditorFlags
