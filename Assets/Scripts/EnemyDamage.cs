@@ -5,31 +5,38 @@ using UnityEngine;
 public class EnemyDamage : MonoBehaviour
 {
     private bool damage;
-    Enemy enemy;
 
     private void Start()
     {
         damage = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.tag == "Enemy")
+        Debug.Log(collision.gameObject.tag);
+        if(collision.gameObject.tag == "Enemy")
         {
-            if (damage)
-            {
-                enemy = other.GetComponent<Enemy>();
-                StartCoroutine(DamageEffect());
-            }
+            StartCoroutine(DamageEffect(collision.gameObject));
         }
     }
 
-    IEnumerator DamageEffect()
+    IEnumerator DamageEffect(GameObject enemy)
     {
-        Debug.Log("Hit");
-        damage = false;
-        enemy.enemyhealth -= 10;
-        yield return new WaitForSeconds(1);
-        damage = true;
+        if (enemy.GetComponent<Enemy>().enemyhealth <= 0)
+        {
+            enemy.GetComponent<EnemyNavmesh>().anim.SetBool("Dead", true);
+            yield return new WaitForSeconds(1);
+            enemy.GetComponent<EnemyNavmesh>().isDead = true;
+        }
+        else
+        {
+            yield return new WaitForSeconds(1);
+            enemy.GetComponent<EnemyNavmesh>().anim.SetBool("Hit", true);
+            enemy.GetComponent<Enemy>().enemyhealth -= 20;
+            damage = false;
+            yield return new WaitForSeconds(1);
+            enemy.GetComponent<EnemyNavmesh>().anim.SetBool("Hit", false);
+            damage = true;
+        }
     }
 }

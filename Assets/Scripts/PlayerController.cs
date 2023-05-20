@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public List<string> attack = new List<string>();
     public BoxCollider leftHand;
     public BoxCollider rightHand;
+    public bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +22,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Grounded();
-        Jump();
-        Move();
-        Attack();
+        if (!isDead)
+        {
+            Grounded();
+            Jump();
+            Move();
+            Attack();
+        }
     }
 
     public void Attack()

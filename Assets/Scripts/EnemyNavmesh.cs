@@ -5,11 +5,20 @@ using UnityEngine.AI;
 
 public class EnemyNavmesh : MonoBehaviour
 {
-    [SerializeField] private Animator anim;
+    public Animator anim;
     [SerializeField] Transform[] waypoints;
     int index;
     Vector3 target;
     private NavMeshAgent navmeshAgent;
+    private bool followPlayer = false;
+    [SerializeField] Transform playerPos;
+    [SerializeField] Transform player;
+    public bool isDead = false;
+    public BoxCollider leftHand;
+    public BoxCollider rightHand;
+    public bool attack;
+    public bool rotate;
+    public GameObject Player;
 
     private void Awake()
     {
@@ -19,10 +28,86 @@ public class EnemyNavmesh : MonoBehaviour
 
     void Update()
     {
-        if(Vector3.Distance(transform.position, target) < 1)
+        if (!isDead)
         {
-            IterateWaypoint();
-            UpdateDestination();
+            if (!followPlayer)
+            {
+                if (Vector3.Distance(transform.position, target) < 1)
+                {
+                    IterateWaypoint();
+                    UpdateDestination();
+                }
+            }
+            else
+            {
+                FollowPlayer();
+            }
+            if (attack)
+                StartCoroutine(startAttack());
+        }
+    }
+
+    IEnumerator startAttack()
+    {
+        attack = false;
+        this.anim.SetBool("Punch", true);
+        rightHand.enabled = true;
+        leftHand.enabled = true;
+        yield return new WaitForSeconds(1);
+        this.anim.SetBool("Punch", false);
+        rightHand.enabled = false;
+        leftHand.enabled = false;
+        yield return new WaitForSeconds(2);
+        if(Player.gameObject.GetComponent<Player>().Health > 0)
+        {
+            attack = true;
+        }
+        else
+        {
+            attack = false;
+            StopCoroutine(startAttack());
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "PlayerArea")
+        {
+            followPlayer = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "PlayerArea")
+        {
+            followPlayer = false;
+        }
+    }
+
+    void FollowPlayer()
+    {
+        if (Vector3.Distance(transform.position, playerPos.position) > 0.1f)
+        {
+            anim.SetBool("isWalking", true);
+            navmeshAgent.SetDestination(playerPos.position);
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
+            RotateTowards(player);
+        }
+    }
+
+    private void RotateTowards(Transform target)
+    {
+        if (rotate)
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f);
+            attack = true;
+            rotate = false;
         }
     }
 
