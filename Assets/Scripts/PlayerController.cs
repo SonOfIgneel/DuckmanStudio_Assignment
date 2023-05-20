@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     public LayerMask layerMask;
     public bool grounded;
+    public List<string> attack = new List<string>();
+    public BoxCollider leftHand;
+    public BoxCollider rightHand;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,25 @@ public class PlayerController : MonoBehaviour
         Grounded();
         Jump();
         Move();
+        Attack();
+    }
+
+    public void Attack()
+    {
+        if (Input.GetMouseButtonDown(0))
+            StartCoroutine(startAttack());
+    }
+
+    IEnumerator startAttack()
+    {
+        int i = Random.Range(0, attack.Count - 1);
+        this.anim.SetBool(attack[i], true);
+        rightHand.enabled = true;
+        leftHand.enabled = true;
+        yield return new WaitForSeconds(1);
+        this.anim.SetBool(attack[i], false);
+        rightHand.enabled = false;
+        leftHand.enabled = false;
     }
 
     public void Grounded()
@@ -53,7 +75,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = this.transform.forward * verticalAxis + this.transform.right * horizontalAxis;
         movement.Normalize();
 
-        this.transform.position += movement * 0.003f;
+        this.transform.position += movement * 0.0035f;
 
         this.anim.SetFloat("Vertical", verticalAxis);
         this.anim.SetFloat("Horizontal", horizontalAxis);
